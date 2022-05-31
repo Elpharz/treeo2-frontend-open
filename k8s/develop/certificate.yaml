@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: treeo-client-develop-com-tls
+spec:
+  secretName: treoo-client-develop-com
+  issuerRef:
+    name: letsencrypt-client-dev
+    kind: ClusterIssuer
+  commonName: treeo-webapp-develop.xyz
+  dnsNames:
+    - treeo-webapp-develop.xyz
+    - www.treeo-webapp-develop.xyz
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - treeo-webapp-develop.xyz
+          - www.treeo-webapp-develop.xyz
